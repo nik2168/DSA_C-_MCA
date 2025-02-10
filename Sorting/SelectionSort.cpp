@@ -11,9 +11,11 @@ int main(){
     for(int i = 0; i < n; i++){
 
         int min_idx = i;  // just assume first as the smallest ele
+
         for(int j = i + 1; j < n; j++){
           if(arr[min_idx] > arr[j]) min_idx = j;  // if first smallest is greator then someone update it
         }
+        
         swap(arr[i], arr[min_idx]); // make sure the smallest in the array comest int he sorted portion
     }
 

@@ -83,17 +83,19 @@ void insertionSort(int arr[], int n) {
         // to one position ahead
         while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
-            j = j - 1;
+            j--;
         }
         arr[j + 1] = key;
     }
 }
 
+// 3 7 6 8
 
-Time & Space Analysis
+
 Time Complexity: O(n²) worst/average, O(n) best
 Space Complexity: O(1)
 Stability: Stable
+Time & Space Analysis
 In-Place: Yes
 
 4. Merge Sort

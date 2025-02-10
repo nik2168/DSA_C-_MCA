@@ -10,11 +10,19 @@ int main()
 
     for (int i = 0; i < arrSize; i++)
     {
+        bool isSwap = false; // optimize buuble sort
+
         for (int j = i + 1; j < arrSize; j++)
         {
-            if (arr[i] > arr[j])
+            if (arr[i] > arr[j]) // just check the adjecent ele and swap if one is smaller then other
+            {
                 swap(arr[i], arr[j]);
+                isSwap = true;
+            }
         }
+
+        if (!isSwap)  break;
+
     }
 
     for (int i = 0; i < arrSize; i++)

@@ -4,59 +4,69 @@ using namespace std;
 
 // int arr[] = {5, 9, 2, 1, 4, 8, 3};
 
-void helper(int arr[], int i, int mid, int n){
-   
-    int n1 = mid - i; // 3
-    int n2 = n - mid; // 3
-
-    vector<int>v1;
-    vector<int> v2;
-
-    for(int j = i; j < n1; j++){
-        v1.push_back(arr[j]);
+void printArr(vector<int> & v){
+    if(v.size() <=0) cout<<"empty"<<endl;
+    for(int i = 0; i < v.size(); i++){
+        cout<<v[i]<<" ";
     }
-
-    for(int j = n2; j <= n; j++){
-        v2.push_back(arr[j]);
-    }
-
-
-    cout<<n1<<" "<<n2<<endl;
-
-    for(int j = 0; j < v1.size(); j++){
-        cout<<v1[j]<<" ";
-    }
-
     cout<<endl;
+}
 
-    for(int j = 0; j < v2.size(); j++){
-        cout<<v2[j]<<" ";
-    }
+void merge(int arr[], int left, int mid, int right)
+{
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
 
-    cout<<endl;
+    // Create temp arrays
+    vector<int> L(n1), R(n2);
 
-    // merge both array
+    // Copy data to temp arrays
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
 
-    int l = 0, j = 0, k = i;
-
-    while(l < v1.size() && j < v2.size()){
-        if(v1[l] < v2[j])   arr[k] = v1[l++];
-        else arr[k] = v2[j++];
+    // Merge temp arrays back
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
+            arr[k] = L[i];
+            i++;
+        }
+        else
+        {
+            arr[k] = R[j];
+            j++;
+        }
         k++;
     }
 
-    while(l < v1.size())     arr[k++] = v1[l++]; 
-    while(j < v2.size())     arr[k++] = v2[j++]; 
+    // Copy remaining elements
+    while (i < n1)
+    {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2)
+    {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
 }
-
 void mergeSort(int arr[], int i, int n){
+
+    if(i >= n) return;
 
     int mid = i + (n - i)/2;
     
-    mergeSort(arr, 0, mid);
-    mergeSort(arr, mid, n);
+    mergeSort(arr, i, mid);
+    mergeSort(arr, mid + 1, n);
     
-    helper(arr, i, mid, n);
+    merge(arr, i, mid, n);
 
     return; 
 }

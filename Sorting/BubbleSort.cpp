@@ -35,3 +35,6 @@ int main()
 
 // g++ -o program main.cpp
 // ./program
+
+// output
+// 1 2 3 4 5

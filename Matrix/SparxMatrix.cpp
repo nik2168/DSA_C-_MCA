@@ -18,21 +18,24 @@ int main(){
         }
     }
 
-    vector<vector<int>>sparx(4, vector<int>(k, 0));
+    vector<vector<int>>sparx(k + 1, vector<int>(3, 0));
+
+    int t = 0;
 
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             if(v[i][j] != 0){
-            sparx[i][0] = i;
-            sparx[i][1] = j;
-            sparx[i][2] = v[i][j];
+            sparx[t][0] = i;
+            sparx[t][1] = j;
+            sparx[t][2] = v[i][j];
+            t++;
             }
         }
     }
 
-    sparx[3][0] = v.size();
-    sparx[3][1] = v[0].size();
-    sparx[3][2] = k;
+    sparx[t][0] = v.size();
+    sparx[t][1] = v[0].size();
+    sparx[t][2] = k;
 
     cout<<"Sparx Matrix is : "<<endl;
 
@@ -47,3 +50,14 @@ int main(){
     return 0;
 }
 
+// output
+// 0 1 3
+// 0 0 2
+// 0 3 0
+
+// Sparx Matrix is : 
+// 0 1 1 
+// 0 2 3 
+// 1 2 2 
+// 2 1 3 
+// 3 3 4 

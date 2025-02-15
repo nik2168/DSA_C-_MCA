@@ -24,3 +24,7 @@ for(int i = 0; i < a.size(); i++){
 
     return 0;
 }
+
+// output
+// 6 8 
+// 10 12 

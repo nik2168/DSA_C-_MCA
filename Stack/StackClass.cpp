@@ -47,7 +47,7 @@ int main(){
 for(int i = 0; i < n; i--){
     int val;
     cin>>val;
-    s.pushBack(val);
+    s.push(val);
 }
 
  cout<<s.top()<<endl;

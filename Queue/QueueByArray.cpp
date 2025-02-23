@@ -1,100 +1,81 @@
-#include <iostream>
-#include <vector>
+#include<iostream>
+#include<vector>
 using namespace std;
 
-class que
-{
-public:
+class queuee{
+    public:
+
     vector<int> arr;
     int front;
     int back;
 
-    que(int size)
-    {
+    queuee(int size){
         arr.resize(size, -1);
         front = -1;
         back = -1;
     }
 
-    void pushBack(int val)
-    {
-
-        if (front == -1 && back == -1)
-        {
-            arr[0] = val;
-            front = 0;
-            back = 0;
+    void push(int val){
+        if(back == -1 && front == -1){
+             front = 0;
+             back = 0;
+             arr[back] = val;
+             return;
         }
-        else if (back < arr.size() - 1)
-        {
-            if (arr[back + 1] == -1)
-            {
-                arr[back + 1] = val;
-                back++;
-            }
-            else
-            {
-                cout << "queue is full !" << endl;
-            }
+        else if(back == arr.size() - 1){
+            cout<<"Queue is full !"<<endl;
         }
-        else if (arr[0] == -1)
-        {
-            arr[0] = val;
-            back = 0;
-        }
-        else
-        {
-            cout << "queue is full !" << endl;
+        else{
+        arr[++back] = val;
         }
     }
 
-    void popFront()
-    {
-        if (front == -1)
-        {
-            cout << "queue is already empty !" << endl;
+    void pop(){
+        if(front == -1 && back == -1){
+            cout<<"Queue is empty !"<<endl;
+            return;
         }
-        else if (front == back)
-        {
-            front = -1;
-            back = -1;
-        }
-        else
-        {
-            arr[front] = -1;
-            if (front == arr.size() - 1)
-            {
-                front = 0;
-                return;
-            }
-            front++;
+        else{
+         for(int i = 0; i < arr.size() - 1; i++){
+            arr[i] = arr[i + 1];
+         }
+         arr[arr.size() - 1] = 0;
         }
     }
 
-    void printQue()
-    {
-        cout << "Array is :" << endl;
-        for (int i : arr)
-        {
-            cout << i << " ";
+
+    void printQueue(){
+        for(int i = 0; i < arr.size(); i++){
+            cout<<arr[i]<<", ";
         }
-        cout << endl;
+        cout<<endl;
     }
+
 };
 
-int main()
-{
+int main(){
 
-    que q(3);
-    q.pushBack(1);
-    q.pushBack(2);
-    q.pushBack(3);
-    q.pushBack(4);
-    q.popFront();
-    q.printQue();
+    int n;
+    cout<<"Enter the queue size : ";
+    cin>>n;
+
+    queuee q(n);
+
+    for(int i = 0; i < n; i++){
+        int val;
+        cin>>val;
+        q.push(val);
+    }
+
+    q.pop();
+
+    q.printQueue();
 
     return 0;
 }
 
-// output - queue is full !
-// Array is : -1 2 3
+
+// output
+// Enter the queue size : 3
+// 1 2 3
+// 2, 3, 0, 

@@ -4,28 +4,26 @@ using namespace std;
 
 int main(){
 
-    int i = 4;
-    int j = 4;
-    int n = 8;
-
-    while(i >= 0 && j < 8){
-        // cout<<i<<" "<<j<<endl;
-        for(int k = 0; k < n; k++){
-    
-            if(i == 1 && j == n - 1){
-                cout<<"* ";
-            }
-            else if(k == i || k == j){
-                cout<<"*";
-            }
-            else {
-                cout<<" ";
-            }
+    for(int i = 0; i < 8; i++){
+        for(int j = 0; j < (8-i); j++){
+           cout<<" "; 
+        }
+        for(int j = 0; j < (2 * i) - 1; j++){
+            cout<<char(j+65);
         }
         cout<<endl;
-        i--;
-        j++;
     }
+    for(int i = 6; i > 0; i--){
+        for(int j = 0; j < (8-i); j++){
+           cout<<" "; 
+        }
+        for(int j = 0; j < (2 * i) - 1; j++){
+            cout<<char(j+65);
+        }
+        cout<<endl;
+    }
+
+    // cout<<char(65);
 
     return 0;
 }

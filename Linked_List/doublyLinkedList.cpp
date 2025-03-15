@@ -259,8 +259,9 @@ public:
         size--;
     }
 
-    int listSize(){
-      return size;
+    int listSize()
+    {
+        return size;
     }
 };
 
@@ -313,18 +314,19 @@ int main()
     l.printList();
 
     int deleteInBtw;
-    cout<<"Enter the no. of elements you want to delete in between : ";
-    cin>>deleteInBtw;
+    cout << "Enter the no. of elements you want to delete in between : ";
+    cin >> deleteInBtw;
 
-    cout<<"Enter the positions where you want to perform delete operations : ";
-    for(int i = 0; i < deleteInBtw; i++){
+    cout << "Enter the positions where you want to perform delete operations : ";
+    for (int i = 0; i < deleteInBtw; i++)
+    {
         int pos;
-        cin>>pos;
+        cin >> pos;
         l.deleteAtPosition(pos);
     }
 
     l.printList();
-    cout<<"The size of the list is : "<<l.listSize()<<endl;
+    cout << "The size of the list is : " << l.listSize() << endl;
 
     return 0;
 }

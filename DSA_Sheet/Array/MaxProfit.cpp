@@ -6,44 +6,26 @@ int maxProfit(vector<int> &prices)
 {
     int n = prices.size();
 
-    if (n == 0 || n == 1)
-        return 0;
+    int res = 0;
 
-    int i = 0, j = 1;
+    int j = 0, k = 0;
 
-    int itr = 0;
+    for(int i = 0; i < n; i++){
 
-    int maxProfit = 0;
+       if(prices[i] < prices[j]){
+           j = i; 
+       }
 
-    while (i < n && j < n && itr < n)
-    {
+       if(prices[i] > prices[j]){
+           k = i;
+       }
 
-        if (prices[itr] <= prices[i])
-        {
-            i = itr;
-            j = itr;
-            int t = itr;
-
-            while (t < n){
-                if(prices[t] > prices[i] && prices[t] > prices[j]){
-                    j = t;
-                }
-                t++;
-            }
-
-            if(j == n){
-                return maxProfit;
-            }
-            else{
-                maxProfit = max(maxProfit, prices[j] - prices[i]);
-                // itr = j;
-            }
-        }
-
-        itr++;
+       if(j < k){
+       res = max(res, prices[k] - prices[j]);
+       }
     }
 
-    return maxProfit;
+    return res;
 }
 
 int main(){

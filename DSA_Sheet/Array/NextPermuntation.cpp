@@ -2,57 +2,91 @@
 #include <vector>
 using namespace std;
 
-vector<vector<int>> permutations;
+void printArr(vector<int> &arr)
+{
 
-void printArr(vector<int> & arr){
-
-    for(auto x : arr){
-        cout<<x<<" ";
+    for (auto x : arr)
+    {
+        cout << x << " ";
     }
 
-    cout<<endl;
+    cout << endl;
 
     return;
 }
 
-void nextPermutation(int i, int n, vector<int> &nums)
+// 1 2 3
+void nextPermutation(vector<int> &nums)
 {
 
-    if (i >= n)
+    int n = nums.size();
+
+    int itr = n - 2;
+
+    bool flag = false;
+
+    while (itr >= 0)
     {
-        permutations.push_back(nums);
-        return;
+
+        if (nums[itr] < nums[itr + 1])
+        {
+            swap(nums[itr], nums[itr + 1]);
+            flag = true;
+            break;
+        }
+
+        else
+        {
+
+            int t = itr;
+
+            while (nums[t] > nums[itr + 1] && t >= 0)
+            {
+                t--;
+            }
+
+            if (t == -1)
+            {
+                break;
+            }
+
+            swap(nums[t], nums[itr + 1]);
+
+            int k = t + 1, l = itr + 1;
+
+            while (k <= l)
+            {
+                swap(nums[k++], nums[l--]);
+            }
+
+            flag = true;
+            break;
+        }
+
+        itr--;
     }
 
-    for (int j = i; j < n; j++)
+    if (!flag)
     {
-        swap(nums[i], nums[j]);
-        printArr(nums);
-        nextPermutation(i + 1, n, nums);
-        swap(nums[i], nums[j]);
+
+        int k = 0;
+        int l = nums.size() - 1;
+        while (k <= l)
+        {
+            swap(nums[k++], nums[l--]);
+        }
     }
 }
 
 int main()
 {
 
-    vector<int> nums = {1, 2, 3};
+    vector<int> nums = {3, 2, 1};
+    // vector<int> nums = {0, 1, 5, 4, 3, 2};
 
-    nextPermutation(0, nums.size(), nums);
+    nextPermutation(nums);
 
-    // for(int i = 0; i < nums.size(); i++){
-    //     cout<<nums[i]<<" ";
-    // }
-    // cout<<endl;
-
-    // for (int i = 0; i < permutations.size(); i++)
-    // {
-    //     for (int j = 0; j < permutations[i].size(); j++)
-    //     {
-    //         cout << permutations[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
+    printArr(nums);
 
     return 0;
 }

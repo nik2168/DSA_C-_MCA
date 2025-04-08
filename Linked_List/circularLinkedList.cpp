@@ -102,11 +102,15 @@ int main()
 
     circularList l;
 
-    l.insertNode(3, true);
-    l.insertNode(2, true);
-    l.insertNode(1, true);
+    for(int i = 0; i < 3; i++){
+        int val;
+        cin>>val;
+        l.insertNode(val, true);
+    }
+
     l.insertNode(4, false);
     l.insertNode(5, false);
+
 
     l.printCircularList();
     l.deleteNode(true);
@@ -117,6 +121,7 @@ int main()
 }
 
 /*
+3 2 1
 head<->1<->2<->3<->4<->5<->tail
 head<->2<->3<->4<->tail
 */

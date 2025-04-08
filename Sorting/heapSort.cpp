@@ -1,5 +1,4 @@
 #include <iostream>
-#include<stack>
 using namespace std;
 
 // okay here we need to sort a array using heap ... we can use any from min heap or max heap
@@ -66,6 +65,7 @@ int main()
 
     maxheapify(a, n); // this will make a max heap out of it
 
+
     for (int i = 1; i <= n; i++)
     {
         cout << a[i] << " ";
@@ -81,3 +81,7 @@ int main()
     }
     return 0;
 }
+
+// output
+// 70 60 5 10 8 
+// 5 8 10 60 70 %

@@ -3,7 +3,6 @@
 using namespace std;
 
 
-int counter = 0;
 
 void printArr(vector<int> & v){
     if(v.size() <=0) cout<<"empty"<<endl;
@@ -26,18 +25,6 @@ void merge(int arr[], int left, int mid, int right)
         L[i] = arr[left + i];
     for (int j = 0; j < n2; j++)
         R[j] = arr[mid + 1 + j];
-
-    int z = 0, v = 0;
-
-    while(z < n1 && v < n2){
-        if(L[z] < R[v]){
-            z++;
-        }
-        else{
-            counter += (n1-z);
-            v++;
-        }
-    }
 
     // Merge temp arrays back
     int i = 0, j = 0, k = left;
@@ -80,18 +67,13 @@ void mergeSort(int arr[], int i, int n){
     mergeSort(arr, mid + 1, n);
     
     merge(arr, i, mid, n);
-    for(int x = 0; x < 5; x++) cout<<arr[x]<<" ";
-    cout<<endl;
 
     return; 
 }
 
 int main(){
 
-    // int arr[] = {2, 3, 4, 5, 6};
     int arr[] = {2, 4, 1, 3, 5};
-    // int arr[] = {5, 9, 2, 1, 4, 8, 3};
-
     int n = sizeof(arr)/sizeof(arr[0]);
 
     mergeSort(arr, 0, n - 1);
@@ -102,7 +84,6 @@ int main(){
 
     cout<<endl;
 
-    cout<<"Counter : "<<counter<<endl;
 
     return 0;
 }

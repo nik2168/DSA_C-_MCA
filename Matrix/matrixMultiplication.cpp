@@ -1,9 +1,9 @@
+// Function to multiply two matrices
 #include <vector>
 #include <iostream>
 
 using namespace std;
 
-// Function to multiply two matrices
 vector<vector<int>> multiplyMatrices(const vector<vector<int>>& A, const vector<vector<int>>& B) {
     int rowsA = A.size();
     int colsA = A[0].size();

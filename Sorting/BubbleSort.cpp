@@ -10,7 +10,7 @@ int main()
 
     for (int i = 0; i < arrSize; i++)
     {
-        bool isSwap = false; // optimize buuble sort
+        bool isSwap = false; // optimize bubble sort
 
         for (int j = i + 1; j < arrSize; j++)
         {

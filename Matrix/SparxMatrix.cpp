@@ -1,6 +1,8 @@
 // g++ -o test code.cpp
 // ./test
 
+// sparse matrix
+
 #include<iostream>
 #include<vector>
 using namespace std;

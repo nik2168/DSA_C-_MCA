@@ -1,81 +1,56 @@
-#include <iostream>
-#include <vector>
-#include <string>
+#include<iostream>
+#include<vector>
 using namespace std;
 
-// Function to return precedence of operators
-int prec(char c)
-{
-    if (c == '^')
-        return 3;
-    else if (c == '/' || c == '*')
-        return 2;
-    else if (c == '+' || c == '-')
-        return 1;
-    else
-        return -1;
+void printArray(vector<int> & v){
+    for(auto x : v) cout<<x<<" ";
+    cout<<endl;
 }
 
-// The main function to convert infix expression
-// to postfix expression
-void infixToPostfix(string s)
-{
-    stack<char> st;
-    string result;
+int main(){
 
-    for (int i = 0; i < s.length(); i++)
-    {
-        char c = s[i];
+    vector<int> v = {4,1,3,2,5};
 
-        // If the scanned character is
-        // an operand, add it to the output string.
-        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'))
-            result += c;
+    // bubble sort -> compare two and push the largest ele at the end on each iteration
+    // for(int i = 0; i < v.size() - 1; i++){
+    //         bool flag = false;
+    //     for(int j = i + 1; j < v.size(); j++){
+    //       if(v[i] > v[j]) {
+    //         swap(v[i], v[j]);
+    //         flag = true;
+    //       }
+    //     }
+    //     if(!flag) break;
+    // }
 
-        // If the scanned character is an
-        // ‘(‘, push it to the stack.
-        else if (c == '(')
-            st.push('(');
+    // selection sort -> find the smallest element and swap it with the first on each iterations
+    // for(int i = 0; i < v.size(); i++){
+    //     int minIdx = i;
+    //     for(int j = i + 1; j < v.size(); j++){
+    //         if(v[j] < v[minIdx]) minIdx =  j;
+    //     }
+    //     swap(v[minIdx], v[i]);
+    // }
 
-        // If the scanned character is an ‘)’,
-        // pop and add to the output string from the stack
-        // until an ‘(‘ is encountered.
-        else if (c == ')')
-        {
-            while (st.top() != '(')
-            {
-                result += st.top();
-                st.pop();
-            }
-            st.pop();
-        }
+    // insertition sort -> put each element in the sorted part of the array starting with size 1
+    // for(int i = 1; i < v.size(); i++){
+    //       int cur = v[i];
+    //       int pre = i - 1;
 
-        // If an operator is scanned
-        else
-        {
-            while (!st.empty() && prec(c) <= prec(st.top()))
-            {
-                result += st.top();
-                st.pop();
-            }
-            st.push(c);
-        }
-    }
+    //       while( pre >= 0 && v[pre] > cur ){
+    //         v[pre + 1] = v[pre];
+    //         pre--; 
+    //       }
 
-    // Pop all the remaining elements from the stack
-    while (!st.empty())
-    {
-        result += st.top();
-        st.pop();
-    }
+    //       v[pre + 1] = cur;
+    // }
 
-    cout << result << endl;
-}
 
-int main()
-{
-    // string exp = "a+b*(c^d-e)^(f+g*h)-i";
-    string exp = "a+b*c+d";
-    infixToPostfix(exp);
+
+    printArray(v);
+
+    cout<<124/10 % 10;
+    
+
     return 0;
 }

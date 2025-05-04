@@ -6,9 +6,9 @@ using namespace std;
 void countSort(vector<int> & v, int n, int pos){
 
     vector<int> freq(10, 0);
-
+ 
     for(int i = 0; i < v.size(); i++){
-        freq[(v[i] / pos) % 10]++;
+        freq[(v[i] / pos) % 10]++;  // 124 / 10 % 10 = 2;
     }
 
     for(int i = 1; i < freq.size(); i++){
@@ -24,14 +24,17 @@ void countSort(vector<int> & v, int n, int pos){
     for(int i = 0; i < v.size(); i++){
         v[i] = ans[i];
     }
+
 }
 
 void radixSort(vector<int> & v, int n){
 
     int maxEle = INT_MIN;
 
+    // take the max element in the array
     for(auto x : v) maxEle = max(maxEle, x);
 
+    // call the count sort according to ones, tens and hundered position ...
     for(int pos = 1; maxEle/pos > 0; pos *= 10){
         countSort(v, n, pos);
     }

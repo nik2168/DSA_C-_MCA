@@ -1,0 +1,7 @@
+MST - Minimum span tree, It is define as a graph in which we have all the node connected by some edges and the weight between them is minimal
+      oe we can say have minimum edges to connect all the nodes and also it doesn't have any kind of cycle.
+
+Kruskals Algorithm : This algorithm was made to make or check if the given graph is a mst or not -
+
+              here we first sort all the edges with respect to their weights and then we start connecting the tree from the smallest weight edges then check at every point if there is any cycle we ingore that edge else continue;
+      

@@ -2,25 +2,8 @@
 #include<vector>
 using namespace std;
 
-   vector<int> e = {0,1,2,3,4,5,6,7,8};
-   vector<int> p = {0,1,2,3,4,5,6,7,8};
-   vector<int> s = {1,1,1,1,1,1,1,1,1};
 
-int find(int r){
-    if(p[r] == r) return r;
-    return p[r] = find(p[r]);
-}
-
-bool unions(int a, int b){
-        int x = find(a);
-        int y = find(b);
-        if(x == y) return true;
-        if(s[x] > s[y]) p[y] = x;
-        else p[x] = y;
-        return false; 
-}
-
-int helper(vector<vector<int>> & edges, int j, int n){
+int quickSortHelper(vector<vector<int>> & edges, int j, int n){
     int p = edges[n][2];
     int r = j;
     for(int i = j; i < n; i++){
@@ -35,10 +18,31 @@ int helper(vector<vector<int>> & edges, int j, int n){
 
 void quicksort(vector<vector<int>> & edges, int i, int n){
     if(i > n) return;
-    int p = helper(edges, i, n);
+    int p = quickSortHelper(edges, i, n);
     quicksort(edges, p + 1, n);
     quicksort(edges, i, p - 1);
 }
+
+
+// kruskals algorithm
+//    vector<int> e = {0,1,2,3,4,5,6,7,8}; // edges
+   vector<int> p = {0,1,2,3,4,5,6,7,8}; // parents
+   vector<int> s = {1,1,1,1,1,1,1,1,1}; // size
+
+int findUltimateParent(int r){
+    if(p[r] == r) return r;
+    return p[r] = findUltimateParent(p[r]);
+}
+
+bool unions(int a, int b){
+        int x = findUltimateParent(a);
+        int y = findUltimateParent(b);
+        if(x == y) return true;
+        if(s[x] > s[y]) p[y] = x;
+        else p[x] = y;
+        return false; 
+}
+
 
 int main(){
    vector<vector<int>> edges = {
@@ -65,6 +69,7 @@ int main(){
      ans += edges[i][2];
     }
 
-    cout<<ans<<endl;
+    cout<<"Minimum edge weight is : "<<ans<<endl;
+
     return 0;
 }

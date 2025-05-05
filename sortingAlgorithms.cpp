@@ -128,6 +128,14 @@ int main()
     //       v[pre + 1] = cur;
     // }
 
+    // Bubble Sort: Best: O(n), Average: O(n²), Worst: O(n²)
+// Selection Sort: Best: O(n²), Average: O(n²), Worst: O(n²)
+// Insertion Sort: Best: O(n), Average: O(n²), Worst: O(n²)
+// Merge Sort: Best: O(n log n), Average: O(n log n), Worst: O(n log n)
+// Quick Sort: Best: O(n log n), Average: O(n log n), Worst: O(n²)
+// Heap Sort: Best: O(n log n), Average: O(n log n), Worst: O(n log n)
+// Radix Sort: Best: O(nk), Average: O(nk), Worst: O(nk)
+// n = number of elements, k = number of digits in the radix sort
     printArray(v);
 
     return 0;
